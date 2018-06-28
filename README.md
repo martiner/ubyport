@@ -44,4 +44,7 @@ ubytovany.setPoznamka("Pozn");
 ubyport.add(ubytovany);
 
 System.out.println(ubyport.asString());
+
+ubyport.export(outputStream);
+
 ```

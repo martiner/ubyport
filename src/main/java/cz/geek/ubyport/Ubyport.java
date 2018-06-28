@@ -3,6 +3,11 @@ package cz.geek.ubyport;
 import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
 
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,5 +85,14 @@ public class Ubyport {
 				.add()
 				.add(ubytovany.getPoznamka());
 		return formatter.toString();
+	}
+
+	public void export(OutputStream stream) throws IOException {
+		requireNonNull(stream, "stream");
+
+		Charset charset = Charset.forName("Windows-1250");
+		OutputStreamWriter writer = new OutputStreamWriter(new BufferedOutputStream(stream), charset);
+		writer.write(asString());
+		writer.flush();
 	}
 }
