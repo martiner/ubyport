@@ -1,6 +1,6 @@
 package cz.geek.ubyport;
 
-public class Ubytovatel {
+public class UbyportUbytovatel {
 
 	private String idub;
 	private String zkratka;

@@ -2,7 +2,7 @@ package cz.geek.ubyport;
 
 import java.time.LocalDate;
 
-public class Ubytovany {
+public class UbyportUbytovany {
 
 	private LocalDate ubytovaniOd;
 	private LocalDate ubytovaniDo;

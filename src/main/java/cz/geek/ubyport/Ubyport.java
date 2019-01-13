@@ -15,17 +15,17 @@ import java.util.StringJoiner;
 
 public class Ubyport {
 
-	private final Ubytovatel ubytovatel;
+	private final UbyportUbytovatel ubytovatel;
 
-	private final List<Ubytovany> ubytovany = new ArrayList<>();
+	private final List<UbyportUbytovany> ubytovany = new ArrayList<>();
 
 	private Instant exported;
 
-	public Ubyport(Ubytovatel ubytovatel) {
+	public Ubyport(UbyportUbytovatel ubytovatel) {
 		this.ubytovatel = requireNonNull(ubytovatel, "ubytovatel");
 	}
 
-	public Ubyport add(Ubytovany... ubytovany) {
+	public Ubyport add(UbyportUbytovany... ubytovany) {
 		this.ubytovany.addAll(asList(ubytovany));
 		return this;
 	}
@@ -66,7 +66,7 @@ public class Ubyport {
 		return formatter.toString();
 	}
 
-	private String formatUbytovany(Ubytovany ubytovany) {
+	private String formatUbytovany(UbyportUbytovany ubytovany) {
 		Formatter formatter = new Formatter()
 				.add("U")
 				.add(ubytovany.getUbytovaniOd())

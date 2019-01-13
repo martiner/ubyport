@@ -13,7 +13,7 @@
 ## Usage
 
 ```java
-Ubytovatel ubytovatel = new Ubytovatel();
+UbyportUbytovatel ubytovatel = new UbyportUbytovatel();
 ubytovatel.setIdub("id1");
 ubytovatel.setZkratka("abbr1");
 ubytovatel.setUbytovatel("Ubyt");
@@ -26,9 +26,7 @@ ubytovatel.setCisloDomovni("2A");
 ubytovatel.setCisloOrientacni("id1");
 ubytovatel.setPsc("11150");
 
-Ubyport ubyport = new Ubyport(ubytovatel);
-
-Ubytovany ubytovany = new Ubytovany();
+UbyportUbytovany ubytovany = new UbyportUbytovany();
 ubytovany.setUbytovaniOd(LocalDate.of(2018, 6, 27));
 ubytovany.setUbytovaniDo(LocalDate.of(2018, 6, 30));
 ubytovany.setPrijmeni("Prijmeni");
@@ -41,6 +39,7 @@ ubytovany.setViza("V123");
 ubytovany.setUcelPobytu(UcelPobytu.U10);
 ubytovany.setPoznamka("Pozn");
 
+Ubyport ubyport = new Ubyport(ubytovatel);
 ubyport.add(ubytovany);
 
 System.out.println(ubyport.asString());

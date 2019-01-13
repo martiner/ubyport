@@ -31,19 +31,19 @@ public class UbyportTest {
 
 	@Test
 	public void shouldExportEmptyUbytovatel() throws Exception {
-		assertThat(new Ubyport(new Ubytovatel()).setExported(TIME).asString())
+		assertThat(new Ubyport(new UbyportUbytovatel()).setExported(TIME).asString())
 				.isEqualTo("A|2||||||||||||27.06.2018 22:57:00||");
 	}
 
 	@Test
 	public void shouldExportEmptyUbytovany() throws Exception {
-		assertThat(new Ubyport(new Ubytovatel()).add(new Ubytovany()).setExported(TIME).asString())
+		assertThat(new Ubyport(new UbyportUbytovatel()).add(new UbyportUbytovany()).setExported(TIME).asString())
 				.isEqualTo("A|2||||||||||||27.06.2018 22:57:00||\r\nU|||||||||||||||");
 	}
 
 	@Test
 	public void shouldExportTwoEmptyUbytovany() throws Exception {
-		assertThat(new Ubyport(new Ubytovatel()).add(new Ubytovany(), new Ubytovany()).setExported(TIME).asString())
+		assertThat(new Ubyport(new UbyportUbytovatel()).add(new UbyportUbytovany(), new UbyportUbytovany()).setExported(TIME).asString())
 				.endsWith("U|||||||||||||||\r\nU|||||||||||||||");
 	}
 
@@ -56,7 +56,7 @@ public class UbyportTest {
 
 	@Test
 	public void shouldExportUbytovany() throws Exception {
-		assertThat(new Ubyport(new Ubytovatel()).add(createUbytovany()).setExported(TIME).asString())
+		assertThat(new Ubyport(new UbyportUbytovatel()).add(createUbytovany()).setExported(TIME).asString())
 				.isEqualTo("A|2||||||||||||27.06.2018 22:57:00||\r\n"
 						+ "U|27.06.2018|30.06.2018|Příjmení|Jmeno||12.05.1980|||SVK|Bydl|AK47|V123|10||Pozn");
 	}
@@ -70,8 +70,8 @@ public class UbyportTest {
 		assertThat(file).hasBinaryContent(readBytes("/example.unl"));
 	}
 
-	private static Ubytovatel createUbytovatel() {
-		Ubytovatel ubytovatel = new Ubytovatel();
+	private static UbyportUbytovatel createUbytovatel() {
+		UbyportUbytovatel ubytovatel = new UbyportUbytovatel();
 		ubytovatel.setIdub("id1");
 		ubytovatel.setZkratka("abbr1");
 		ubytovatel.setUbytovatel("Ubyt");
@@ -86,8 +86,8 @@ public class UbyportTest {
 		return ubytovatel;
 	}
 
-	private static Ubytovany createUbytovany() {
-		Ubytovany ubytovany = new Ubytovany();
+	private static UbyportUbytovany createUbytovany() {
+		UbyportUbytovany ubytovany = new UbyportUbytovany();
 		ubytovany.setUbytovaniOd(LocalDate.of(2018, 6, 27));
 		ubytovany.setUbytovaniDo(LocalDate.of(2018, 6, 30));
 		ubytovany.setPrijmeni("Příjmení");
