@@ -24,12 +24,26 @@ public class UbyportUbytovany {
 		this.ubytovaniOd = ubytovaniOd;
 	}
 
+	public void setUbytovaniOd(org.joda.time.LocalDate date) {
+		if (date == null) {
+			return;
+		}
+		this.ubytovaniOd = convertLocalDate(date);
+	}
+
 	public LocalDate getUbytovaniDo() {
 		return ubytovaniDo;
 	}
 
 	public void setUbytovaniDo(LocalDate ubytovaniDo) {
 		this.ubytovaniDo = ubytovaniDo;
+	}
+
+	public void setUbytovaniDo(org.joda.time.LocalDate date) {
+		if (date == null) {
+			return;
+		}
+		this.ubytovaniDo = convertLocalDate(date);
 	}
 
 	public String getPrijmeni() {
@@ -54,6 +68,13 @@ public class UbyportUbytovany {
 
 	public void setNarozeni(LocalDate narozeni) {
 		this.narozeni = narozeni;
+	}
+
+	public void setNarozeni(org.joda.time.LocalDate date) {
+		if (date == null) {
+			return;
+		}
+		this.narozeni = convertLocalDate(date);
 	}
 
 	public StatniPrislusnost getStatniPrislusnost() {
@@ -102,5 +123,9 @@ public class UbyportUbytovany {
 
 	public void setPoznamka(String poznamka) {
 		this.poznamka = poznamka;
+	}
+
+	private static LocalDate convertLocalDate(org.joda.time.LocalDate date) {
+		return LocalDate.of(date.getYear(), date.getMonthOfYear(), date.getDayOfMonth());
 	}
 }
