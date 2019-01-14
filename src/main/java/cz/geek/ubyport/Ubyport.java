@@ -4,6 +4,7 @@ import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -94,5 +95,11 @@ public class Ubyport {
 		OutputStreamWriter writer = new OutputStreamWriter(new BufferedOutputStream(stream), charset);
 		writer.write(asString());
 		writer.flush();
+	}
+
+	public byte[] export() throws IOException {
+		ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+		export(byteArray);
+		return byteArray.toByteArray();
 	}
 }
